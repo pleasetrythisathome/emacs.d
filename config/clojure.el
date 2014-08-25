@@ -63,6 +63,28 @@
 ;;   (define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
 ;;   (define-key cider-repl-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
 
+(defun cider-insert (fs)
+  (save-some-buffers)
+  (with-current-buffer (cider-current-repl-buffer)
+    (goto-char (point-max))
+    (insert fs)
+    (cider-repl-return)))
+
+(defun cider-repl-reset ()
+  (interactive)
+  (cider-insert ":cljs/quit")
+  (cider-insert "(user/reset)"))
+(defun cider-brepl ()
+  (interactive)
+  (cider-insert "(user/browser-repl)"))
+(defun cider-brepl-stop ()
+  (interactive)
+  (cider-insert ":cljs/quit"))
+
+(global-set-key (kbd "C-c r") 'cider-repl-reset)
+(global-set-key (kbd "C-c M-b") 'cider-brepl)
+(global-set-key (kbd "C-c c") 'cider-brepl-stop)
+
 ;;
 ;; Kibit Mode
 ;;
