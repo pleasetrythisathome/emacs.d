@@ -1,6 +1,7 @@
 (require 'color-theme)
 (load-theme 'zenburn t)
 
+(set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/HEAD/bin/emacsclient")
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
