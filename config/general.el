@@ -38,3 +38,16 @@
 (defalias 'ack-same 'ack-and-a-half-same)
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+
+(defun split-window-vertical (&optional number)
+  "Split the current window into `number' windows"
+  (interactive "P")
+  (setq number (if number
+                   (prefix-numeric-value number)
+                 2))
+  (while (> number 1)
+    (split-window-right)
+    (setq number (- number 1)))
+  (balance-windows))
+
+(global-set-key (kbd "C-x C-3") 'split-window-vertical)
