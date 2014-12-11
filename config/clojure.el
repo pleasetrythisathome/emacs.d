@@ -19,6 +19,7 @@
 
 (setq auto-mode-alist (append '(("\\.cljs$" . clojure-mode)
                                 ("\\.cljx$" . clojure-mode)
+                                ("\\.boot$" . clojure-mode)
                                 ("\\.edn$" . clojure-mode)
                                 ("\\.dtm$" . clojure-mode))
                               auto-mode-alist))
@@ -32,6 +33,7 @@
 
 (define-clojure-indent
   (defroutes 'defun)
+  (fnk 'defun)
   (GET 2)
   (POST 2)
   (PUT 2)
@@ -44,8 +46,8 @@
 ;; cider
 ;;
 (require 'cider)
-(require 'cider-decompile)
-(require 'cider-tracing)
+;;(require 'cider-decompile)
+;;(require 'cider-tracing)
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
@@ -82,16 +84,19 @@
 
 (defun cider-repl-reset ()
   (interactive)
-  (cider-insert ":cljs/quit")
-  (cider-insert "(user/reset)"))
+  (cider-insert "(dev/reset)"))
+(defun cider-repl-dev-reset ()
+  (interactive)
+  (cider-insert "(dev/dev-reset)"))
 (defun cider-brepl ()
   (interactive)
-  (cider-insert "(user/browser-repl)"))
+  (cider-insert "(dev/start-cljs-repl!)"))
 (defun cider-brepl-stop ()
   (interactive)
   (cider-insert ":cljs/quit"))
 
 (global-set-key (kbd "C-c r") 'cider-repl-reset)
+(global-set-key (kbd "C-c R") 'cider-repl-dev-reset)
 (global-set-key (kbd "C-c M-b") 'cider-brepl)
 (global-set-key (kbd "C-c c") 'cider-brepl-stop)
 
