@@ -10,6 +10,7 @@
 (setq c-basic-offset 2)
 (setq js-indent-level 2)
 (setq css-indent-level 2)
+(setq css-indent-offset 2)
 
 (setq js-indent-level 2)
 (setq js2-always-indent-assigned-expr-in-decls-p t)

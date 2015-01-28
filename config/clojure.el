@@ -84,19 +84,15 @@
 
 (defun cider-repl-reset ()
   (interactive)
-  (cider-insert "(dev/reset)"))
-(defun cider-repl-dev-reset ()
-  (interactive)
-  (cider-insert "(dev/dev-reset)"))
+  (cider-insert "(reset)"))
 (defun cider-brepl ()
   (interactive)
-  (cider-insert "(dev/start-cljs-repl!)"))
+  (cider-insert "(start-repl)"))
 (defun cider-brepl-stop ()
   (interactive)
   (cider-insert ":cljs/quit"))
 
 (global-set-key (kbd "C-c r") 'cider-repl-reset)
-(global-set-key (kbd "C-c R") 'cider-repl-dev-reset)
 (global-set-key (kbd "C-c M-b") 'cider-brepl)
 (global-set-key (kbd "C-c c") 'cider-brepl-stop)
 
