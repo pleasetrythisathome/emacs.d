@@ -26,6 +26,7 @@
 (depends-on "ack-and-a-half")
 (depends-on "ido-ubiquitous")
 (depends-on "ido-vertical-mode")
+(depends-on "find-file-in-project")
 (depends-on "flx")
 (depends-on "flx-ido")
 (depends-on "google")
