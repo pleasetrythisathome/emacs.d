@@ -1,4 +1,4 @@
-(require 'color-theme)
+;; (require 'color-theme)
 (load-theme 'zenburn t)
 
 (set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/HEAD/bin/emacsclient")
