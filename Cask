@@ -6,6 +6,10 @@
 (depends-on "pallet")
 (depends-on "servant")
 
+;; functional
+(depends-on "dash")
+(depends-on "dash-functional")
+
 ;; coloring 
 (depends-on "ansi")
 (depends-on "color-theme")
@@ -24,6 +28,7 @@
 (depends-on "ido-vertical-mode")
 (depends-on "flx")
 (depends-on "flx-ido")
+(depends-on "google")
 (depends-on "neotree")
 (depends-on "project-explorer")
 (depends-on "projectile")
@@ -54,9 +59,12 @@
 ;; http
 (depends-on "request")
 (depends-on "httprepl")
-(depends-on "google")
 
-;; languages
+;; process
+(depends-on "prodigy")
+(depends-on "rvm")
+
+;; languages modes
 (depends-on "dockerfile-mode")
 (depends-on "go-mode")
 (depends-on "inf-ruby")
@@ -69,3 +77,8 @@
 (depends-on "org")
 (depends-on "tagedit")
 (depends-on "yaml-mode")
+
+;; hints
+(depends-on "flymake")
+(depends-on "flymake-jshint")
+(depends-on "flymake-cursor")
