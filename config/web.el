@@ -1,5 +1,4 @@
 ;;jshint mode
-(add-to-list 'load-path "~/.emacs.d/packs/live/lang-pack/lib/jshint-mode/")
 (require 'flymake-jshint)
 (add-hook 'js2-mode-hook
      (lambda () (flymake-mode t)))

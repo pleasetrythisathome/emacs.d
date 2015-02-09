@@ -2,17 +2,10 @@
 ;; clojure-mode
 ;;
 (require 'clojure-mode)
-(require 'clojure-test-mode)
-(require 'clojure-cheatsheet)
-(require 'cljsbuild-mode)
-(require 'typed-clojure-mode)
+(require 'cider-test)
 
-(require 'datomic-snippets)
-
-;; (add-hook 'clojure-mode-hook
-;;           (lambda ()
-;;             (setq buffer-save-without-query t)
-;;             (clojure-test-mode)))
+(require 'rainbow-delimiters)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
 (defun replacement-region (replacement)
   (compose-region (match-beginning 1) (match-end 1) replacement))
@@ -42,6 +35,18 @@
   (ANY 2)
   (context 2))
 
+(put 'implement 'clojure-backtracking-indent '(4 (2)))
+(put 'letfn 'clojure-backtracking-indent '((2) 2))
+(put 'proxy 'clojure-backtracking-indent '(4 4 (2)))
+(put 'reify 'clojure-backtracking-indent '((2)))
+(put 'deftype 'clojure-backtracking-indent '(4 4 (2)))
+(put 'defrecord 'clojure-backtracking-indent '(4 4 (2)))
+(put 'defprotocol 'clojure-backtracking-indent '(4 (2)))
+(put 'extend-type 'clojure-backtracking-indent '(4 (2)))
+(put 'extend-protocol 'clojure-backtracking-indent '(4 (2)))
+(put 'specify 'clojure-backtracking-indent '(4 (2)))
+(put 'specify! 'clojure-backtracking-indent '(4 (2)))
+
 ;;
 ;; cider
 ;;
@@ -69,12 +74,6 @@
 
 (add-hook 'cider-connected-hook 'cider-enable-on-existing-clojure-buffers)
 
-;; using ac-nrepl-popup-doc for documentation
-;; (require 'ac-nrepl)
-;; (after 'cider
-;;   (define-key cider-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
-;;   (define-key cider-repl-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc))
-
 (defun cider-insert (fs)
   (save-some-buffers)
   (with-current-buffer (cider-current-repl-buffer)
@@ -95,38 +94,5 @@
 (global-set-key (kbd "C-c r") 'cider-repl-reset)
 (global-set-key (kbd "C-c M-b") 'cider-brepl)
 (global-set-key (kbd "C-c c") 'cider-brepl-stop)
-
-;;
-;; Kibit Mode
-;;
-(require 'kibit-mode)
-
-;; (add-hook 'clojure-mode-hook
-;;           (lambda () (when (buffer-file-name) (progn (kibit-mode) (flymake-mode-on)))))
-
-;; Teach compile the syntax of the kibit output
-(require 'compile)
-(add-to-list 'compilation-error-regexp-alist-alist
-             '(kibit "At \\([^:]+\\):\\([[:digit:]]+\\):" 1 2 nil 0))
-(add-to-list 'compilation-error-regexp-alist 'kibit)
-
-;; A convenient command to run "lein kibit" in the project to which
-;; the current emacs buffer belongs to.
-(defun kibit ()
-  "Run kibit on the current project. Display the results in a hyperlinked *compilation* buffer."
-  (interactive)
-  (compile "lein kibit"))
-
-;; (after 'kibit-mode
-;;   ;; kibit mode overrides C-c C-n, which is needed for evaluating namespace forms
-;;   (define-key kibit-mode-keymap (kbd "C-c C-n") nil))
-
-;;
-;; dependency management
-;;
-(require 'latest-clojure-libraries)
-
-;; rainbow params
-(global-rainbow-delimiters-mode)
 
 (global-set-key (kbd "C-=") 'er/expand-region)

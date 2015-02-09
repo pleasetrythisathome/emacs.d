@@ -13,6 +13,6 @@
 
 (load "general.el")
 (load "clojure.el")
-(load "prodigy.el")
+;; (load "prodigy.el")
 (load "web.el")
 (load "bindings.el")
