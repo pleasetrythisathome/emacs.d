@@ -23,18 +23,20 @@
 (depends-on "powerline")
 
 ;; navigation
-(depends-on "ack-and-a-half")
+(depends-on "ag")
 (depends-on "ido-ubiquitous")
 (depends-on "ido-vertical-mode")
 (depends-on "find-file-in-project")
 (depends-on "flx")
 (depends-on "flx-ido")
-(depends-on "google")
 (depends-on "neotree")
 (depends-on "project-explorer")
 (depends-on "projectile")
-(depends-on "pt")
 (depends-on "smex")
+
+;; documentation
+(depends-on "dash-at-point")
+(depends-on "google")
 
 ;; buffers
 (depends-on "bm")
