@@ -3,9 +3,16 @@
 ;;
 (require 'clojure-mode)
 (require 'cider-test)
+(require 'clojure-mode-extra-font-locking)
 
-(require 'rainbow-delimiters)
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'subword-mode)
+(add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(require 'clj-refactor)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               (cljr-add-keybindings-with-prefix "C-c C-m")))
 
 (defun replacement-region (replacement)
   (compose-region (match-beginning 1) (match-end 1) replacement))

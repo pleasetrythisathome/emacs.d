@@ -54,6 +54,7 @@
 (depends-on "cider")
 (depends-on "clojure-mode")
 (depends-on "clojure-mode-extra-font-locking")
+(depends-on "clj-refactor")
 (depends-on "company")
 (depends-on "kibit-mode")
 
