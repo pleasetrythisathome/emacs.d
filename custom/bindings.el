@@ -40,12 +40,10 @@ narrowed."
         ((derived-mode-p 'org-mode) (org-narrow-to-subtree))
         (t (narrow-to-defun))))
 
-
 (winner-mode 1)
 (windmove-default-keybindings)
 (setq org-replace-disputed-keys t)
 
-;; kill buffer
 (defun kill-current-buffer ()
   (interactive)
   (kill-buffer (current-buffer)))
@@ -62,28 +60,19 @@ narrowed."
     (goto-char (point-max))
     (insert form)
     (cider-repl-return)))
-;; Place your bindings here.
 
-(global-set-key (kbd "C-x C-o") 'ffip)
-(global-set-key (kbd "C-x C-g") 'rgrep)
+(defun split-window-vertical (&optional number)
+  "Split the current window into `number' windows"
+  (interactive "P")
+  (setq number (if number
+                   (prefix-numeric-value number)
+                 2))
+  (while (> number 1)
+    (split-window-right)
+    (setq number (- number 1)))
+  (balance-windows))
 
-;; bookmarks
-(global-set-key (kbd "C-c M-t") 'bm-toggle)
-(global-set-key (kbd "C-c M-n") 'bm-next)
-(global-set-key (kbd "C-c M-p") 'bm-previous)
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-c C-a") 'mc/mark-all-like-this-dwim)
-
-(global-set-key (kbd "C-c [") 'swap-parens)
-
-(global-set-key (kbd "C-c C-n") 'narrow-or-widen-dwim)
-
-(global-set-key (kbd "C-`") 'cider-eval-expression-at-point-in-repl)
-
+(global-set-key (kbd "C-x C-3") 'split-window-vertical)
 
 ;; Default Emacs Live bindings
 
@@ -157,11 +146,6 @@ narrowed."
 
 ;;diff shortcuts
 (global-set-key (kbd "C-c d f") 'diff-buffer-with-file)
-
-
-(global-set-key (kbd "C-c s t") 'live-show-ansi-terminal)
-(global-set-key (kbd "C-c s n") 'live-new-ansi-terminal)
-(global-set-key (kbd "C-c s m") 'live-show-messages)
 
 ;;window and buffer movement
 (global-set-key (kbd "C-c w s") 'swap-windows)
@@ -239,10 +223,6 @@ narrowed."
 ;;use delete-horizontal-space to completely nuke all whitespace
 (global-set-key (kbd "M-SPC ") 'live-delete-whitespace-except-one)
 
-;;make ^h delete rather than help
-(global-set-key (kbd "C-h") 'delete-backward-char)
-(define-key paredit-mode-map (kbd "C-h") 'paredit-backward-delete)
-
 ;;redefine help shortcut
 (global-set-key (kbd "M-h") 'help-command)
 (define-key org-mode-map (kbd "M-h") 'help-command)
@@ -277,9 +257,6 @@ narrowed."
 (global-set-key  (kbd "M-p") 'outline-previous-visible-heading)
 (global-set-key  (kbd "M-n") 'outline-next-visible-heading)
 
-;;requires cua-mode for rectangle selection
-(global-set-key (kbd "§") 'cua-set-rectangle-mark)
-
 ;; Align your code in a pretty way.
 (global-set-key (kbd "C-x \\") 'align-regexp)
 
@@ -302,10 +279,6 @@ narrowed."
 (global-set-key (kbd "M-`")       'file-cache-minibuffer-complete)
 (global-set-key (kbd "C-x C-b")   'ibuffer)
 
-;; Window switching.
-(global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
-(global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; forward two
-
 ;; If you want to be able to M-x without meta
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
@@ -318,9 +291,6 @@ narrowed."
     (let ((case-fold-search isearch-case-fold-search))
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 
-;; Ace jump mode
-(global-set-key (kbd "C-o") 'ace-jump-mode)
-
 ;; Show documentation/information with M-RET
 (define-key lisp-mode-shared-map (kbd "M-RET") 'live-lisp-describe-thing-at-point)
 ;;(define-key cider-repl-mode-map (kbd "M-RET") 'cider-doc)
@@ -329,3 +299,31 @@ narrowed."
 (global-set-key (kbd "C-x o") 'win-switch-dispatch)
 
 (global-set-key (kbd "C-x !") 'live-server-kill-terminal)
+
+;; =========== Personal Bindings ==========
+
+(global-set-key (kbd "C-x C-o") 'ffip)
+(global-set-key (kbd "C-x C-g") 'ag)
+
+;; bookmarks
+(global-set-key (kbd "C-c M-t") 'bm-toggle)
+(global-set-key (kbd "C-c M-n") 'bm-next)
+(global-set-key (kbd "C-c M-p") 'bm-previous)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c C-a") 'mc/mark-all-like-this-dwim)
+
+(global-set-key (kbd "C-c [") 'swap-parens)
+
+(global-set-key (kbd "C-c C-n") 'narrow-or-widen-dwim)
+
+(global-set-key (kbd "C-`") 'cider-eval-expression-at-point-in-repl)
+
+;; Ace jump mode
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
