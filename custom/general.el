@@ -1,6 +1,10 @@
 ;; (require 'color-theme)
 (load-theme 'zenburn t)
 
+(require 'smart-mode-line)
+(sml/setup)
+(sml/apply-theme 'powerline)
+
 (set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/HEAD/bin/emacsclient")
 
 (setq-default indent-tabs-mode nil)
@@ -25,7 +29,7 @@
 
 ;; ffip
 (setq ffip-limit 4096)
-(setq ffip-patterns (append `("*.erb" "*.tpl" "*.php" "*.css" "*.ru" "*.json" "*.rb" "*.sass" "*.scss" "*.clj" "*.cljs") ffip-patterns))
+;; (setq ffip-patterns (append `("*.erb" "*.tpl" "*.php" "*.css" "*.ru" "*.json" "*.rb" "*.sass" "*.scss" "*.clj" "*.cljs") ffip-patterns))
 (setq ffip-full-paths 1)
 
 (ido-mode 1)
