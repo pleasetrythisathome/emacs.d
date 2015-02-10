@@ -23,6 +23,7 @@
 (depends-on "powerline")
 
 ;; navigation
+(depends-on "ace-jump-mode")
 (depends-on "ag")
 (depends-on "ido-ubiquitous")
 (depends-on "ido-vertical-mode")
