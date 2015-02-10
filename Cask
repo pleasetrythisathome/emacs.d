@@ -33,6 +33,8 @@
 (depends-on "neotree")
 (depends-on "project-explorer")
 (depends-on "projectile")
+(depends-on "recentf")
+(depends-on "saveplace")
 (depends-on "smex")
 
 ;; documentation
