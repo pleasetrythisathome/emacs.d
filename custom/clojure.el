@@ -5,24 +5,32 @@
 (require 'cider-test)
 (require 'clojure-mode-extra-font-locking)
 
-(add-hook 'clojure-mode-hook #'subword-mode)
-(add-hook 'clojure-mode-hook #'paredit-mode)
-(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
-(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-(require 'clj-refactor)
-(add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               (cljr-add-keybindings-with-prefix "C-c C-m")))
-
-(defun replacement-region (replacement)
-  (compose-region (match-beginning 1) (match-end 1) replacement))
-
 (setq auto-mode-alist (append '(("\\.cljs$" . clojure-mode)
                                 ("\\.cljx$" . clojure-mode)
                                 ("\\.boot$" . clojure-mode)
                                 ("\\.edn$" . clojure-mode)
                                 ("\\.dtm$" . clojure-mode))
                               auto-mode-alist))
+
+(dolist (x '(scheme emacs-lisp lisp clojure))
+  (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'subword-mode)
+  (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'rainbow-delimiters-mode)
+  (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'smartparens-strict-mode)
+  (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'rainbow-delimiters-mode))
+
+;; refactor
+(require 'clj-refactor)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               (cljr-add-keybindings-with-prefix "C-c C-m")))
+
+(define-key clojure-mode-map (kbd "C-:") 'cljr-cycle-stringlike)
+(define-key clojure-mode-map (kbd "C->") 'cljr-cycle-coll)
+
+(defun replacement-region (replacement)
+  (compose-region (match-beginning 1) (match-end 1) replacement))
+
+;; spacing
 
 (defun core-logic-config ()
   "Update the indentation rules for core.logic"
@@ -58,16 +66,14 @@
 ;; cider
 ;;
 (require 'cider)
-;;(require 'cider-decompile)
-;;(require 'cider-tracing)
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
 (setq nrepl-hide-special-buffers nil)
-(setq cider-repl-pop-to-buffer-on-connect nil)
+(setq cider-repl-pop-to-buffer-on-connect t)
 
-(setq cider-popup-stacktraces t)
+(setq cider-popup-stacktraces t) 
 (setq cider-repl-popup-stacktraces t)
 (setq cider-auto-select-error-buffer t)
 
@@ -103,3 +109,27 @@
 (global-set-key (kbd "C-c c") 'cider-brepl-stop)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
+
+(defun warn-when-cider-not-connected ()
+      (interactive)
+      (message "nREPL server not connected. Run M-x cider or M-x cider-jack-in to connect."))
+
+(define-key clojure-mode-map (kbd "C-M-x")   'warn-when-cider-not-connected)
+(define-key clojure-mode-map (kbd "C-x C-e") 'when-cider-not-connected)
+(define-key clojure-mode-map (kbd "C-c C-e") 'warn-when-cider-not-connected)
+(define-key clojure-mode-map (kbd "C-c C-l") 'warn-when-cider-not-connected)
+(define-key clojure-mode-map (kbd "C-c C-r") 'warn-when-cider-not-connected)
+
+;;Treat hyphens as a word character when transposing words
+(defvar clojure-mode-with-hyphens-as-word-sep-syntax-table
+  (let ((st (make-syntax-table clojure-mode-syntax-table)))
+    (modify-syntax-entry ?- "w" st)
+    st))
+
+(defun live-transpose-words-with-hyphens (arg)
+  "Treat hyphens as a word character when transposing words"
+  (interactive "*p")
+  (with-syntax-table clojure-mode-with-hyphens-as-word-sep-syntax-table
+    (transpose-words arg)))
+
+(define-key clojure-mode-map (kbd "M-t") 'live-transpose-words-with-hyphens)
