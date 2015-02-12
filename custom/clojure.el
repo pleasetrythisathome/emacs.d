@@ -15,6 +15,7 @@
 (dolist (x '(scheme emacs-lisp lisp clojure))
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'subword-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'rainbow-delimiters-mode)
+  (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'paredit-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'smartparens-strict-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'rainbow-delimiters-mode))
 
@@ -73,7 +74,7 @@
 (setq nrepl-hide-special-buffers nil)
 (setq cider-repl-pop-to-buffer-on-connect t)
 
-(setq cider-popup-stacktraces t) 
+(setq cider-popup-stacktraces t)
 (setq cider-repl-popup-stacktraces t)
 (setq cider-auto-select-error-buffer t)
 

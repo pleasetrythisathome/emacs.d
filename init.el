@@ -15,6 +15,7 @@
 ;; (load "prodigy.el")
 (load "web.el")
 (load "bindings.el")
+(load "highlight.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

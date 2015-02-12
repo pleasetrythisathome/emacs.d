@@ -10,9 +10,10 @@
 (depends-on "dash")
 (depends-on "dash-functional")
 
-;; coloring 
+;; coloring
 (depends-on "ansi")
 (depends-on "color-theme")
+(depends-on "highlight")
 (depends-on "rainbow-delimiters")
 (depends-on "rainbow-mode")
 (depends-on "zenburn-theme")
@@ -50,24 +51,27 @@
 (depends-on "popup")
 (depends-on "scratch")
 (depends-on "smartparens")
+(depends-on "undo-tree")
 
 ;; git
 (depends-on "gist")
 (depends-on "magit")
 
-;; clojure		
+;; clojure
 (depends-on "cider")
 (depends-on "clojure-mode")
 (depends-on "clojure-mode-extra-font-locking")
 (depends-on "clj-refactor")
 (depends-on "company")
+(depends-on "eval-sexp-fu")
 (depends-on "kibit-mode")
 
 ;; http
 (depends-on "request")
 (depends-on "httprepl")
 
-;; process
+;; shell
+(depends-on "exec-path-from-shell")
 (depends-on "prodigy")
 (depends-on "rvm")
 

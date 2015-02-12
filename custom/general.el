@@ -6,8 +6,11 @@
 (sml/setup)
 (sml/apply-theme 'powerline)
 
-(setq ns-auto-hide-menu-bar t)
+(global-undo-tree-mode)
+
+;; (setq ns-auto-hide-menu-bar t)
 (tool-bar-mode 0)
+(global-visual-line-mode t)
 
 (set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/HEAD/bin/emacsclient")
 
@@ -43,6 +46,7 @@
 
 (ido-mode 1)
 (ido-everywhere 1)
+(ido-vertical-mode nil)
 (flx-ido-mode 1)
 (icomplete-mode 1)
 (setq ido-enable-prefix nil
