@@ -12,6 +12,7 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 (load "general.el")
 (load "clojure.el")
+(load "paredit-conf.el")
 ;; (load "prodigy.el")
 (load "web.el")
 (load "bindings.el")
