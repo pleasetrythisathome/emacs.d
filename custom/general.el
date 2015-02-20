@@ -7,6 +7,7 @@
 (sml/apply-theme 'powerline)
 
 (global-undo-tree-mode)
+(set-frame-parameter nil 'unsplittable t)
 
 ;; (setq ns-auto-hide-menu-bar t)
 (tool-bar-mode 0)
