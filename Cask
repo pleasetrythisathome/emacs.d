@@ -87,6 +87,7 @@
 (depends-on "nodejs-repl")
 (depends-on "org")
 (depends-on "tagedit")
+(depends-on "scss-mode")
 (depends-on "yaml-mode")
 
 ;; hints
