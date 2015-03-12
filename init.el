@@ -11,6 +11,7 @@
 (add-to-list 'load-path "~/.emacs.d/lib")
 (add-to-list 'load-path "~/.emacs.d/custom")
 (load "general.el")
+(load "clojure-repls.el")
 (load "clojure.el")
 (load "paredit-conf.el")
 ;; (load "prodigy.el")

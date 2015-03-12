@@ -25,8 +25,13 @@
                                (clj-refactor-mode 1)
                                (cljr-add-keybindings-with-prefix "C-c C-m")))
 
-(define-key clojure-mode-map (kbd "C-:") 'cljr-cycle-stringlike)
+(add-hook 'clojure-mode-hook (lambda () (yas/minor-mode 1)))
+
+(define-key clojure-mode-map (kbd "C-:") 'clojure-toggle-keyword-string)
 (define-key clojure-mode-map (kbd "C->") 'cljr-cycle-coll)
+
+(setq clj-add-ns-to-blank-clj-files t)
+(setq cljr-sort-comparator 'cljr--semantic-comparator)
 
 (defun replacement-region (replacement)
   (compose-region (match-beginning 1) (match-end 1) replacement))
@@ -82,32 +87,33 @@
 (setq cider-repl-history-file (expand-file-name "cider-history" user-emacs-directory))
 
 (setq cider-repl-use-clojure-font-lock t)
-(setq cider-switch-to-repl-command 'cider-switch-to-relevant-repl-buffer)
+(setq cider-switch-to-repl-command 'clojure-repls-switch-to-relevant-repl)
 
 (add-to-list 'same-window-buffer-names "*cider*")
 
 (add-hook 'cider-connected-hook 'cider-enable-on-existing-clojure-buffers)
 
-(defun cider-insert (fs)
+(defun cider-insert (buff fs)
   (save-some-buffers)
-  (with-current-buffer (cider-current-repl-buffer)
+  (with-current-buffer (or buff (cider-current-repl-buffer))
     (goto-char (point-max))
     (insert fs)
     (cider-repl-return)))
 
 (defun cider-repl-reset ()
   (interactive)
-  (cider-insert "(reset)"))
+  (clojure-repls-set-connection nil nil)
+  (cider-insert nil "(boot-component.reloaded/reset)"))
 (defun cider-brepl ()
   (interactive)
-  (cider-insert "(start-repl)"))
+  (cider-insert clojure-repls-cljs-con-buf "(start-repl)"))
 (defun cider-brepl-stop ()
   (interactive)
-  (cider-insert ":cljs/quit"))
+  (cider-insert clojure-repls-cljs-con-buf ":cljs/quit"))
 
 (global-set-key (kbd "C-c r") 'cider-repl-reset)
 (global-set-key (kbd "C-c M-b") 'cider-brepl)
-(global-set-key (kbd "C-c c") 'cider-brepl-stop)
+(global-set-key (kbd "C-c q") 'cider-brepl-stop)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 
@@ -116,7 +122,7 @@
       (message "nREPL server not connected. Run M-x cider or M-x cider-jack-in to connect."))
 
 (define-key clojure-mode-map (kbd "C-M-x")   'warn-when-cider-not-connected)
-(define-key clojure-mode-map (kbd "C-x C-e") 'when-cider-not-connected)
+(define-key clojure-mode-map (kbd "C-x C-e") 'warn-when-cider-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-e") 'warn-when-cider-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-l") 'warn-when-cider-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-r") 'warn-when-cider-not-connected)
