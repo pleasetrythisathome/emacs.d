@@ -20,7 +20,7 @@
 
 (defun clojure-repls-set-cljs-buffer ()
   (interactive)
-  (setq clojure-repls-cljs-con-buf (-buffer)))
+  (setq clojure-repls-cljs-con-buf (current-buffer)))
 
 (defun clojure-repls-bound-truthy-p (s)
   (and (boundp s) (symbol-value s)))
