@@ -47,6 +47,7 @@
 (depends-on "nginx-mode")
 (depends-on "nodejs-repl")
 (depends-on "org")
+(depends-on "package-build")
 (depends-on "pallet")
 (depends-on "paredit")
 (depends-on "popup")
