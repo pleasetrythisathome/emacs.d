@@ -87,33 +87,10 @@
 (setq cider-repl-history-file (expand-file-name "cider-history" user-emacs-directory))
 
 (setq cider-repl-use-clojure-font-lock t)
-(setq cider-switch-to-repl-command 'clojure-repls-switch-to-relevant-repl)
 
 (add-to-list 'same-window-buffer-names "*cider*")
 
 (add-hook 'cider-connected-hook 'cider-enable-on-existing-clojure-buffers)
-
-(defun cider-insert (buff fs)
-  (save-some-buffers)
-  (with-current-buffer (or buff (cider-current-repl-buffer))
-    (goto-char (point-max))
-    (insert fs)
-    (cider-repl-return)))
-
-(defun cider-repl-reset ()
-  (interactive)
-  (clojure-repls-set-connection nil nil)
-  (cider-insert nil "(boot-component.reloaded/reset)"))
-(defun cider-brepl ()
-  (interactive)
-  (cider-insert clojure-repls-cljs-con-buf "(start-repl)"))
-(defun cider-brepl-stop ()
-  (interactive)
-  (cider-insert clojure-repls-cljs-con-buf ":cljs/quit"))
-
-(global-set-key (kbd "C-c r") 'cider-repl-reset)
-(global-set-key (kbd "C-c M-b") 'cider-brepl)
-(global-set-key (kbd "C-c q") 'cider-brepl-stop)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 
