@@ -117,3 +117,8 @@
     (transpose-words arg)))
 
 (define-key clojure-mode-map (kbd "M-t") 'live-transpose-words-with-hyphens)
+
+(defun nrepl-set-print-length ()
+  (nrepl-send-string-sync "(set! *print-length* 100)" "clojure.core"))
+
+(add-hook 'nrepl-connected-hook 'nrepl-set-print-length)
