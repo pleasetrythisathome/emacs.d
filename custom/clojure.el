@@ -12,7 +12,7 @@
                                 ("\\.dtm$" . clojure-mode))
                               auto-mode-alist))
 
-(dolist (x '(scheme emacs-lisp lisp clojure))
+(dolist (x '(scheme emacs-lisp lisp clojure cider cider-repl))
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'subword-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'rainbow-delimiters-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'paredit-mode)
@@ -75,6 +75,8 @@
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+
+(setq cider-repl-use-pretty-printing t)
 
 (setq nrepl-hide-special-buffers nil)
 (setq cider-repl-pop-to-buffer-on-connect t)
