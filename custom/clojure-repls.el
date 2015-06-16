@@ -8,15 +8,15 @@
 (defvar clojure-repls-clj-con-buf nil)
 (defvar clojure-repls-cljs-con-buf nil)
 
-(defadvice cider-connect (around stfu activate)
-      (flet ((yes-or-no-p (&rest args) t)
-             (y-or-n-p (&rest args) t))
-        ad-do-it))
+;; (defadvice cider-connect (around stfu activate)
+;;       (flet ((yes-or-no-p (&rest args) t)
+;;              (y-or-n-p (&rest args) t))
+;;         ad-do-it))
 
-(defadvice save-some-buffers (around stfu activate)
-      (flet ((yes-or-no-p (&rest args) t)
-             (y-or-n-p (&rest args) t))
-        ad-do-it))
+;; (defadvice save-some-buffers (around stfu activate)
+;;       (flet ((yes-or-no-p (&rest args) t)
+;;              (y-or-n-p (&rest args) t))
+;;         ad-do-it))
 
 (defun cider-insert (buff fs)
   (save-some-buffers t)
