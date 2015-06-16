@@ -4,7 +4,7 @@
 (load-theme 'zenburn t)
 (require 'smart-mode-line)
 (sml/setup)
-(sml/apply-theme 'powerline)
+;; (sml/apply-theme 'powerline)
 
 (global-undo-tree-mode)
 (set-frame-parameter nil 'unsplittable t)
@@ -14,6 +14,8 @@
 (global-visual-line-mode t)
 
 (set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/HEAD/bin/emacsclient")
+
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; indentation
 
@@ -36,6 +38,11 @@
 (setq js2-indent-on-enter-key t)
 (setq js2-mode-show-strict-warnings nil)
 (setq js2-pretty-multiline-declarations (quote all))
+
+(add-hook 'haml-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (define-key haml-mode-map "\C-m" 'newline-and-indent)))
 
 ;; autocomplete
 (add-hook 'after-init-hook 'global-company-mode)

@@ -7,6 +7,7 @@
 
 (setq auto-mode-alist (append '(("\\.cljs$" . clojure-mode)
                                 ("\\.cljx$" . clojure-mode)
+                                ("\\.cljc$" . clojure-mode)
                                 ("\\.boot$" . clojure-mode)
                                 ("\\.edn$" . clojure-mode)
                                 ("\\.dtm$" . clojure-mode))
@@ -47,7 +48,10 @@
 
 (define-clojure-indent
   (defroutes 'defun)
+  (defnk 'defun)
   (fnk 'defun)
+  (specify 1)
+  (match 1)
   (GET 2)
   (POST 2)
   (PUT 2)
@@ -62,7 +66,9 @@
 (put 'reify 'clojure-backtracking-indent '((2)))
 (put 'deftype 'clojure-backtracking-indent '(4 4 (2)))
 (put 'defrecord 'clojure-backtracking-indent '(4 4 (2)))
+(put 's/defrecord 'clojure-backtracking-indent '(4 4 (2)))
 (put 'defprotocol 'clojure-backtracking-indent '(4 (2)))
+(put 'defprotocolschema 'clojure-backtracking-indent '(4 (2)))
 (put 'extend-type 'clojure-backtracking-indent '(4 (2)))
 (put 'extend-protocol 'clojure-backtracking-indent '(4 (2)))
 (put 'specify 'clojure-backtracking-indent '(4 (2)))

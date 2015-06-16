@@ -118,7 +118,7 @@
 (global-set-key (kbd "C-c M-b") 'clojure-repls-create-repls)
 (global-set-key (kbd "C-c r") 'clojure-repls-system-reset)
 (global-set-key (kbd "C-c C-r") 'clojure-repls-system-reset)
-(global-set-key (kbd "C-c C-q") 'clojure-repls-quit)
+(global-set-key (kbd "C-c q") 'clojure-repls-quit)
 (setq cider-switch-to-repl-command 'clojure-repls-switch-to-relevant-repl)
 
 (provide 'clojure-repls)
