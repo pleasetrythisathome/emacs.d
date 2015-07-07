@@ -31,6 +31,8 @@
 (define-key clojure-mode-map (kbd "C-:") 'clojure-toggle-keyword-string)
 (define-key clojure-mode-map (kbd "C->") 'cljr-cycle-coll)
 
+(add-hook 'clojure-mode-hook 'typed-clojure-mode)
+
 (setq clj-add-ns-to-blank-clj-files t)
 (setq cljr-sort-comparator 'cljr--semantic-comparator)
 
