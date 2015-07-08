@@ -297,7 +297,6 @@ narrowed."
 ;;(define-key cider-mode-map (kbd "M-RET") 'cider-doc)
 
 (global-set-key (kbd "C-x o") 'win-switch-dispatch)
-
 (global-set-key (kbd "C-x !") 'live-server-kill-terminal)
 
 ;; =========== Personal Bindings ==========
