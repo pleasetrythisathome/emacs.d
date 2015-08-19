@@ -7,6 +7,7 @@
 (depends-on "ag")
 (depends-on "ansi")
 (depends-on "bm")
+(depends-on "browse-kill-ring")
 (depends-on "cask")
 (depends-on "cider")
 (depends-on "clj-refactor")

@@ -17,6 +17,8 @@
 
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+(setq browse-kill-ring-highlight-current-entry t)
+
 ;; indentation
 
 (setq-default indent-tabs-mode nil)
