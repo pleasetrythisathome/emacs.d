@@ -49,10 +49,9 @@
 (add-hook 'clojure-mode-hook 'core-logic-config)
 
 (define-clojure-indent
-  (defroutes 'defun)
-  (defnk 'defun)
-  (fnk 'defun)
-  (specify 1)
+  (defroutes :defn)
+  (defnk :defn)
+  (fnk :defn)
   (match 1)
   (GET 2)
   (POST 2)
@@ -60,22 +59,10 @@
   (DELETE 2)
   (HEAD 2)
   (ANY 2)
-  (context 2))
-
-(put 'implement 'clojure-backtracking-indent '(4 (2)))
-(put 'letfn 'clojure-backtracking-indent '((2) 2))
-(put 'd/let-flow 'clojure-backtracking-indent '((2) 2))
-(put 'proxy 'clojure-backtracking-indent '(4 4 (2)))
-(put 'reify 'clojure-backtracking-indent '((2)))
-(put 'deftype 'clojure-backtracking-indent '(4 4 (2)))
-(put 'defrecord 'clojure-backtracking-indent '(4 4 (2)))
-(put 's/defrecord 'clojure-backtracking-indent '(4 4 (2)))
-(put 'defprotocol 'clojure-backtracking-indent '(4 (2)))
-(put 'defprotocolschema 'clojure-backtracking-indent '(4 (2)))
-(put 'extend-type 'clojure-backtracking-indent '(4 (2)))
-(put 'extend-protocol 'clojure-backtracking-indent '(4 (2)))
-(put 'specify 'clojure-backtracking-indent '(4 (2)))
-(put 'specify! 'clojure-backtracking-indent '(4 (2)))
+  (context 2)
+  (d/let-flow        '(1 ((:defn)) nil))
+  (s/defrecord       '(2 nil nil (1)))
+  (defprotocolschema '(1 nil (:defn))))
 
 ;;
 ;; cider
