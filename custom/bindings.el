@@ -93,6 +93,8 @@ narrowed."
 ;;s - show popupwindows
 ;;w - window and buffer shortcuts
 
+(global-set-key (kbd "C-c C-s") 'replace-string)
+
 
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") 'eval-and-replace)
