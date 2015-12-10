@@ -38,6 +38,7 @@
 (depends-on "gist")
 (depends-on "go-mode")
 (depends-on "google")
+(depends-on "haml-mode")
 (depends-on "highlight")
 (depends-on "htmlize")
 (depends-on "httprepl")
