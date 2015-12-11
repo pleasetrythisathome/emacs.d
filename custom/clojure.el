@@ -62,6 +62,7 @@
   (context 2)
   (d/let-flow        '(1 ((:defn)) nil))
   (let-flow        '(1 ((:defn)) nil))
+  (for-map        '(1 ((:defn)) nil))
   (s/defrecord       '(2 nil nil (1)))
   (defprotocolschema '(1 nil (:defn)))
   (defui '(1 nil (:defn))))
