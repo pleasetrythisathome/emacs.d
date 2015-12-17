@@ -52,6 +52,8 @@
   (defroutes :defn)
   (defnk :defn)
   (fnk :defn)
+  (s/defn :defn)
+  (s/defschema :defn)
   (match 1)
   (GET 2)
   (POST 2)
