@@ -48,6 +48,8 @@
   (put-clojure-indent 'conde 'defun))
 (add-hook 'clojure-mode-hook 'core-logic-config)
 
+(setq clojure-indent-style :always-indent)
+
 (define-clojure-indent
   (defroutes :defn)
   (defnk :defn)
