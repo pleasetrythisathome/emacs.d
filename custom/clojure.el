@@ -48,7 +48,7 @@
   (put-clojure-indent 'conde 'defun))
 (add-hook 'clojure-mode-hook 'core-logic-config)
 
-(setq clojure-indent-style :always-indent)
+(setq clojure-indent-style nil)
 
 (define-clojure-indent
   (defroutes :defn)
