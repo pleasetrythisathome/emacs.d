@@ -104,6 +104,8 @@
       (message "nREPL server not connected. Run M-x cider or M-x cider-jack-in to connect."))
 
 (define-key clojure-mode-map (kbd "C-M-x")   'warn-when-cider-not-connected)
+(define-key clojure-mode-map (kbd "C-M-s-x") 'warn-when-cider-not-connected)
+(global-set-key (kbd "C-M-s-x") 'cider-eval-defun-at-point)
 (define-key clojure-mode-map (kbd "C-x C-e") 'warn-when-cider-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-e") 'warn-when-cider-not-connected)
 (define-key clojure-mode-map (kbd "C-c C-l") 'warn-when-cider-not-connected)
