@@ -48,7 +48,6 @@
 (depends-on "inf-ruby")
 (depends-on "js2-mode")
 (depends-on "jsx-mode")
-(depends-on "kibit-mode")
 (depends-on "latest-clojure-libraries")
 (depends-on "less-css-mode")
 (depends-on "logito")

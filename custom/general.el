@@ -19,9 +19,6 @@
 
 (setq browse-kill-ring-highlight-current-entry t)
 
-(setq tramp-ssh-controlmaster-options "-o ControlPath=%%C -o
-ControlMaster=auto -o ControlPersist=no")
-
 ;; indentation
 
 (setq-default indent-tabs-mode nil)
