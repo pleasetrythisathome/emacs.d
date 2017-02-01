@@ -1,6 +1,51 @@
-;; -*- emacs-lisp -*- <16/12/15 01:05:30 /Users/pleasetrythisathome/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <17/01/03 12:18:59 /Users/pleasetrythisathome/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
 ((["scp" "wintermute" "192.168.7.2" nil nil]
+  ("uname" "Linux 3.8.13-bone79")
+  ("locale" "LC_ALL=en_US.utf8")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("remote-shell" "/bin/sh")
+  ("~" "/home/wintermute")
+  ("file-exists" "test -e")
+  ("case-insensitive" nil)
+  ("ls" "/bin/ls --color=never")
+  ("ls-quoting-style" t)
+  ("ls-dired" t)
+  ("stat" "\\stat")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 1002)
+  ("readlink" "\\readlink")
+  ("gid-string" "wintermute")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl"))
+ (["scp" "root" "192.168.2.2" nil nil]
+  ("uname" "Linux 3.8.13-bone79")
+  ("locale" "LC_ALL=en_US.utf8")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("remote-shell" "/bin/sh")
+  ("~" "/root")
+  ("file-exists" "test -e")
+  ("case-insensitive" nil)
+  ("ls" "/bin/ls --color=never")
+  ("ls-quoting-style" t)
+  ("ls-dired" t)
+  ("stat" "\\stat")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 0)
+  ("readlink" "\\readlink")
+  ("gid-string" "root")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("git" "\\git"))
+ (["scp" nil "scp" nil nil]
+  nil)
+ (["scp" nil "ssh" nil nil]
   nil))
