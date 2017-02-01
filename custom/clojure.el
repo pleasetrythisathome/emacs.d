@@ -6,14 +6,16 @@
 (require 'clojure-mode-extra-font-locking)
 
 (setq auto-mode-alist (append '(("\\.cljs$" . clojure-mode)
-                                ("\\.cljx$" . clojure-mode)
-                                ("\\.cljc$" . clojure-mode)
                                 ("\\.boot$" . clojure-mode)
                                 ("\\.edn$" . clojure-mode)
                                 ("\\.dtm$" . clojure-mode))
                               auto-mode-alist))
 
-(dolist (x '(scheme emacs-lisp lisp clojure cider cider-repl))
+(setq auto-mode-alist (append '(("\\.cljx$" . clojurec-mode)
+                                ("\\.cljc$" . clojurec-mode))
+                              auto-mode-alist))
+
+(dolist (x '(scheme emacs-lisp lisp clojure clojurec cider cider-repl))
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'subword-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'rainbow-delimiters-mode)
   (add-hook (intern (concat (symbol-name x) "-mode-hook")) 'paredit-mode)
@@ -77,7 +79,7 @@
 (require 'cider)
 
 (add-hook 'clojure-mode-hook 'cider-mode)
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
 (setq cider-repl-use-pretty-printing t)
 
@@ -129,3 +131,11 @@
   (nrepl-send-string-sync "(set! *print-length* 100)" "clojure.core"))
 
 (add-hook 'nrepl-connected-hook 'nrepl-set-print-length)
+
+(defun clojure-repls-system-reset ()
+  (interactive)
+  (clojure-repls-set-connection nil nil)
+  (cider-insert nil "(reset)"))
+
+(global-set-key (kbd "C-c r") 'clojure-repls-system-reset)
+(global-set-key (kbd "C-c C-r") 'clojure-repls-system-reset)

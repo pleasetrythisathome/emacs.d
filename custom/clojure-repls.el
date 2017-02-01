@@ -93,8 +93,8 @@
 (defun clojure-repls-switch-to-relevant-repl (arg)
   (interactive)
   (lexical-let ((a arg))
-    (clojure-repls-set-connection (lambda () (cider-switch-to-current-repl-buffer a))
-                                        (lambda () (cider-switch-to-relevant-repl-buffer a)))))
+               (clojure-repls-set-connection (lambda () (cider-switch-to-current-repl-buffer a))
+                                             (lambda () (cider-switch-to-relevant-repl-buffer a)))))
 
 ;; (if (version< emacs-version "24.4")
 ;;     (progn
@@ -113,12 +113,13 @@
 (defun clojure-repls-system-reset ()
   (interactive)
   (clojure-repls-set-connection nil nil)
-  (cider-insert nil "(boot-component.reloaded/reset)"))
+  (cider-insert nil "(reset)"))
 
 (global-set-key (kbd "C-c M-b") 'clojure-repls-create-repls)
 (global-set-key (kbd "C-c r") 'clojure-repls-system-reset)
 (global-set-key (kbd "C-c C-r") 'clojure-repls-system-reset)
 (global-set-key (kbd "C-c q") 'clojure-repls-quit)
+
 (setq cider-switch-to-repl-command 'clojure-repls-switch-to-relevant-repl)
 
 (provide 'clojure-repls)
