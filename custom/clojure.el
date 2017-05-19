@@ -134,7 +134,6 @@
 
 (defun clojure-repls-system-reset ()
   (interactive)
-  (clojure-repls-set-connection nil nil)
   (cider-insert nil "(reset)"))
 
 (global-set-key (kbd "C-c r") 'clojure-repls-system-reset)
