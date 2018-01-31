@@ -5,7 +5,7 @@
 (require 'cider-test)
 (require 'clojure-mode-extra-font-locking)
 
-(setq auto-mode-alist (append '(("\\.cljs$" . clojure-mode)
+(setq auto-mode-alist (append '(("\\.cljs$" . clojurescript-mode)
                                 ("\\.boot$" . clojure-mode)
                                 ("\\.edn$" . clojure-mode)
                                 ("\\.dtm$" . clojure-mode))
@@ -128,13 +128,16 @@
 (define-key clojure-mode-map (kbd "M-t") 'live-transpose-words-with-hyphens)
 
 (defun nrepl-set-print-length ()
-  (nrepl-send-string-sync "(set! *print-length* 100)" "clojure.core"))
+  (nrepl-sync-request:eval "(set! *print-length* 100)"
+                           (cider-current-connection)))
 
 (add-hook 'nrepl-connected-hook 'nrepl-set-print-length)
 
 (defun clojure-repls-system-reset ()
   (interactive)
   (cider-insert nil "(reset)"))
+
+(setq nrepl-log-messages t)
 
 (global-set-key (kbd "C-c r") 'clojure-repls-system-reset)
 (global-set-key (kbd "C-c C-r") 'clojure-repls-system-reset)

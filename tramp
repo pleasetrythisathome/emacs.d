@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <17/01/03 12:18:59 /Users/pleasetrythisathome/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <17/10/25 10:04:08 /Users/pleasetrythisathome/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -45,7 +45,7 @@
   ("perl-cwd-realpath" t)
   ("perl" "\\perl")
   ("git" "\\git"))
- (["scp" nil "scp" nil nil]
-  nil)
  (["scp" nil "ssh" nil nil]
+  nil)
+ (["ssh" "ubuntu" "52.55.54.54" nil nil]
   nil))
