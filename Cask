@@ -65,7 +65,6 @@
 (depends-on "nodejs-repl")
 (depends-on "noflet")
 (depends-on "org")
-(depends-on "package-build")
 (depends-on "pallet")
 (depends-on "paredit")
 (depends-on "pcache")
