@@ -1,16 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ replace-string
+ terraform-mode
+ package-autoremove
+ package-list-packages
  ag
  cd
  5x5
- arp
- dbx
- dig
- erc
 )
 
 ;; ----- smex-data -----
 (
- 
+ (package-list-packages . 2)
+ (package-autoremove . 1)
+ (terraform-mode . 1)
+ (replace-string . 3)
 )
