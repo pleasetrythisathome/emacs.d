@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ customize-variable
+ rename-file
+ list-packages
  replace-string
- terraform-mode
- package-autoremove
- package-list-packages
- ag
- cd
- 5x5
+ package-install
+ delete-file
+ handlebars-mode
 )
 
 ;; ----- smex-data -----
@@ -15,5 +15,13 @@
  (package-list-packages . 2)
  (package-autoremove . 1)
  (terraform-mode . 1)
- (replace-string . 3)
+ (replace-string . 7)
+ (bookmark-set . 1)
+ (package-install . 2)
+ (handlebars-mode . 1)
+ (delete-file . 1)
+ (shell-mode . 1)
+ (list-packages . 1)
+ (rename-file . 1)
+ (customize-variable . 1)
 )
