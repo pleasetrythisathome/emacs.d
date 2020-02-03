@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ shell-mode
+ run-python
  customize-variable
  rename-file
  list-packages
  replace-string
  package-install
- delete-file
- handlebars-mode
 )
 
 ;; ----- smex-data -----
@@ -20,8 +20,9 @@
  (package-install . 2)
  (handlebars-mode . 1)
  (delete-file . 1)
- (shell-mode . 1)
+ (shell-mode . 2)
  (list-packages . 1)
  (rename-file . 1)
  (customize-variable . 1)
+ (run-python . 1)
 )

@@ -1,6 +1,6 @@
 ;; require the main file containing common functions
 (require 'eval-in-repl)
-y
+
 ;; Uncomment if no need to jump after evaluating current line
 ;; (setq eir-jump-after-eval nil)
 
